@@ -33,6 +33,16 @@
 npm run build
 ```
 
+## 部署到GitHub Pages
+
+專案已配置GitHub Actions自動部署到GitHub Pages。
+
+1. 在GitHub repo設定中，前往 "Pages" 頁面
+2. 將Source設定為 "Deploy from a branch"
+3. 選擇 "gh-pages" 分支和 "/ (root)" 資料夾
+4. 推送程式碼到main分支，Actions會自動建置並部署
+5. 遊戲將可在 `https://asia17242.github.io/Snake_01/` 訪問
+
 ## 遊戲控制
 
 - **方向鍵**：控制蛇的移動方向
