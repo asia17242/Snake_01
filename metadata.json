@@ -1,6 +1,0 @@
-{
-  "name": "Classic Snake Challenge",
-  "description": "一個使用 React 和 Canvas 打造的經典貪食蛇遊戲，具備現代化的介面設計與流暢的遊戲體驗。",
-  "requestFramePermissions": [],
-  "majorCapabilities": []
-}
