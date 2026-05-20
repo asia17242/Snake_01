@@ -162,11 +162,11 @@ export default function SnakeGame() {
     if (!ctx) return;
 
     // 清除畫布
-    ctx.fillStyle = '#0f172a'; // 深紫色背景
+    ctx.fillStyle = '#f8fafc'; // 明亮背景
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    // 繪製格線（可選，增加科技感）
-    ctx.strokeStyle = '#1e293b';
+    // 繪製格線（可選，增加質感）
+    ctx.strokeStyle = '#e2e8f0';
     ctx.lineWidth = 1;
     for (let x = 0; x <= CANVAS_WIDTH; x += GRID_SIZE) {
       ctx.beginPath();
@@ -259,31 +259,31 @@ export default function SnakeGame() {
   }, [snake, food, direction]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#020617] text-white p-4 font-sans">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-transparent text-slate-900 p-4 font-sans">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-[800px] mb-6 flex items-center justify-between"
       >
         <div className="flex flex-col">
-          <h1 className="text-4xl font-black italic tracking-tighter text-emerald-400">
-            SNAKE <span className="text-white not-italic font-light">CLASSIC</span>
+          <h1 className="text-4xl font-black italic tracking-tighter text-emerald-600">
+            SNAKE <span className="text-slate-700 not-italic font-light">CLASSIC</span>
           </h1>
-          <p className="text-slate-400 text-sm">使用方向鍵移動，空白鍵暫停</p>
+          <p className="text-slate-600 text-sm">使用方向鍵移動，空白鍵暫停</p>
         </div>
         
         <div className="flex gap-4">
-          <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-3 flex items-center gap-3">
+          <div className="bg-white/60 border border-slate-200 rounded-xl p-3 flex items-center gap-3">
             <Trophy className="w-5 h-5 text-amber-400" />
             <div className="flex flex-col">
               <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">High Score</span>
               <span className="text-xl font-mono leading-none">{highScore}</span>
             </div>
           </div>
-          <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-3 flex items-center gap-3 min-w-[100px]">
+          <div className="bg-white/60 border border-slate-200 rounded-xl p-3 flex items-center gap-3 min-w-[100px]">
             <div className="flex flex-col items-end w-full">
               <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Current Score</span>
-              <span className="text-2xl font-mono leading-none text-emerald-400">{score}</span>
+              <span className="text-2xl font-mono leading-none text-emerald-600">{score}</span>
             </div>
           </div>
         </div>
@@ -291,7 +291,7 @@ export default function SnakeGame() {
 
       <div className="relative group">
         <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-        <div className="relative rounded-xl overflow-hidden border-4 border-slate-800 shadow-2xl">
+        <div className="relative rounded-xl overflow-hidden border-4 border-slate-200 shadow-lg">
           <canvas
             ref={canvasRef}
             width={CANVAS_WIDTH}
@@ -307,14 +307,14 @@ export default function SnakeGame() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center z-10"
+                className="absolute inset-0 bg-white/70 backdrop-blur-sm flex flex-col items-center justify-center z-10"
               >
-                <div className="p-8 rounded-3xl bg-slate-900 border border-slate-700 shadow-2xl flex flex-col items-center max-w-xs text-center">
+                <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-lg flex flex-col items-center max-w-xs text-center text-slate-900">
                   <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6">
                     <Play className="w-10 h-10 text-emerald-400 fill-emerald-400 ml-1" />
                   </div>
                   <h2 className="text-2xl font-bold mb-2">遊戲暫停中</h2>
-                  <p className="text-slate-400 mb-8 text-sm">按下空白鍵或下方按鈕繼續挑戰！</p>
+                  <p className="text-slate-600 mb-8 text-sm">按下空白鍵或下方按鈕繼續挑戰！</p>
                   <button
                     onClick={() => setIsPaused(false)}
                     className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
@@ -329,17 +329,17 @@ export default function SnakeGame() {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="absolute inset-0 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center z-20"
+                className="absolute inset-0 bg-white/90 backdrop-blur-md flex flex-col items-center justify-center z-20"
               >
-                <div className="p-10 rounded-3xl bg-slate-900 border-2 border-red-500/50 shadow-[0_0_50px_rgba(239,68,68,0.2)] flex flex-col items-center max-w-sm text-center">
+                <div className="p-10 rounded-3xl bg-white border-2 border-red-200 shadow-[0_0_50px_rgba(239,68,68,0.08)] flex flex-col items-center max-w-sm text-center text-slate-900">
                   <div className="text-red-500 mb-4 animate-pulse">
                     <RefreshCw className="w-16 h-16" />
                   </div>
-                  <h2 className="text-4xl font-black mb-2 text-white">GAME OVER</h2>
+                  <h2 className="text-4xl font-black mb-2 text-slate-900">GAME OVER</h2>
                   <div className="space-y-1 mb-8">
-                    <p className="text-slate-400 text-sm">分數：<span className="text-white font-mono">{score}</span></p>
+                    <p className="text-slate-600 text-sm">分數：<span className="text-slate-900 font-mono">{score}</span></p>
                     {score === highScore && score > 0 && (
-                      <p className="text-amber-400 text-xs font-bold font-mono">恭喜創下最高紀錄！</p>
+                      <p className="text-amber-600 text-xs font-bold font-mono">恭喜創下最高紀錄！</p>
                     )}
                   </div>
                   <button
@@ -359,7 +359,7 @@ export default function SnakeGame() {
       {/* Control Help / Touch Controls */}
       <div className="mt-8 grid grid-cols-2 gap-8 w-full max-w-[800px]">
         <div className="flex flex-col gap-4">
-          <h3 className="text-slate-500 text-[10px] uppercase font-bold tracking-[0.2em]">操作說明</h3>
+          <h3 className="text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em]">操作說明</h3>
           <div className="flex gap-2">
             {[
               { key: '↑', label: '向上' },
@@ -368,13 +368,13 @@ export default function SnakeGame() {
               { key: '→', label: '向右' }
             ].map(item => (
               <div key={item.key} className="flex flex-col items-center gap-1">
-                <div className="w-10 h-10 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-lg font-bold">
+                <div className="w-10 h-10 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-lg font-bold text-slate-700">
                   {item.key}
                 </div>
               </div>
             ))}
             <div className="flex flex-col items-center gap-1 ml-2">
-              <div className="h-10 px-4 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-xs font-bold uppercase">
+              <div className="h-10 px-4 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-xs font-bold uppercase text-slate-700">
                 SPACE
               </div>
             </div>
@@ -382,10 +382,10 @@ export default function SnakeGame() {
         </div>
 
         <div className="flex flex-col gap-4 items-end">
-          <h3 className="text-slate-500 text-[10px] uppercase font-bold tracking-[0.2em]">遊戲統計</h3>
-          <div className="text-sm text-slate-400 text-right">
-            當前長度: <span className="text-white font-mono">{snake.length}</span><br />
-            遊戲難度: <span className="text-emerald-400 font-mono">標準</span>
+          <h3 className="text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em]">遊戲統計</h3>
+          <div className="text-sm text-slate-600 text-right">
+            當前長度: <span className="text-slate-900 font-mono">{snake.length}</span><br />
+            遊戲難度: <span className="text-emerald-600 font-mono">標準</span>
           </div>
         </div>
       </div>
